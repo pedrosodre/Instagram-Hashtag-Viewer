@@ -40,7 +40,7 @@
 		crossorigin="anonymous"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<!-- <script src="./js/all.min.js"></script> -->
-	
+
 	<script type="text/javascript">
 
 		$(document).ready(function () {
@@ -52,7 +52,7 @@
 
 			$('#loading').show();
 
-			$.get('http://localhost:3000/', function (data) {
+			$.get('https://formatura.pedrosodre.dev/api', function (data) {
 
 				$.each(data.photos, function (key, item) {
 
