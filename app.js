@@ -20,6 +20,11 @@ async function getHashtag(hashtag) {
 
 			for await ( var photo of sharedData ) {
 
+				var caption = '';
+
+				if(photo.node.accessibility_caption !== undefined)
+					caption = photo.node.accessibility_caption.replace('No photo description available.', '').replace('Image may contain: ', '');
+
 				var push = await jsonReturn.push({
 					id: photo.node.id,
 					image: photo.node.display_url,
@@ -27,7 +32,7 @@ async function getHashtag(hashtag) {
 					text: photo.node.edge_media_to_caption.edges[0].node.text,
 					likes: photo.node.edge_liked_by.count,
 					comments: photo.node.edge_media_to_comment.count,
-					accessibility_caption: photo.node.accessibility_caption,
+					accessibility_caption: caption,
 					time_formated: moment.unix( photo.node.taken_at_timestamp ).format( 'DD/MM/YYYY [às] hh:mm:ss' ),
 				});
 
