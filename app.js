@@ -1,4 +1,5 @@
 const axios 			= require('axios');
+const moment 			= require('moment');
 
 var express 			= require('express');
 var app 				= express();
@@ -24,7 +25,9 @@ async function getHashtag(hashtag) {
 					image_thumb: photo.node.thumbnail_resources[4].src,
 					text: photo.node.edge_media_to_caption.edges[0].node.text,
 					likes: photo.node.edge_liked_by.count,
-					comments: photo.node.edge_media_to_comment.count
+					comments: photo.node.edge_media_to_comment.count,
+					timestamp: photo.node.taken_at_timestamp,
+					time_formated: moment.unix( photo.node.taken_at_timestamp ).format( 'DD/MM/YYYY [às] hh:mm:ss' ),
 				});
 
 			}
