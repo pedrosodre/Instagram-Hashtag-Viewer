@@ -44,6 +44,10 @@ app.get('/', async function (req, res) {
 	res.send( { photos: await getHashtag('FormaturaAnaEPedro') } );
 });
   
+app.get('/api', async function (req, res) {
+	res.send( { photos: await getHashtag('FormaturaAnaEPedro') } );
+});
+  
 app.listen(3000, function () {
 	console.log('App listening on port 3000!');
 });
