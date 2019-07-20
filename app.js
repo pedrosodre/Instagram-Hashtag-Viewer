@@ -15,18 +15,19 @@ async function getHashtag(hashtag) {
 
 		if( data.split('window._sharedData =').pop().split(';</script>')[0] !== undefined ) {
 
-			var sharedData 	= await JSON.parse( data.split('window._sharedData =').pop().split(';</script>')[0] );
-			sharedData 		= await sharedData.entry_data.TagPage[0].graphql.hashtag.edge_hashtag_to_media.edges;
+			var sharedData 				= await JSON.parse( data.split('window._sharedData =').pop().split(';</script>')[0] );
+			sharedData 					= await sharedData.entry_data.TagPage[0].graphql.hashtag.edge_hashtag_to_media.edges;
 
 			for await ( var photo of sharedData ) {
 
 				var push = await jsonReturn.push({
+					id: photo.node.id,
 					image: photo.node.display_url,
 					image_thumb: photo.node.thumbnail_resources[4].src,
 					text: photo.node.edge_media_to_caption.edges[0].node.text,
 					likes: photo.node.edge_liked_by.count,
 					comments: photo.node.edge_media_to_comment.count,
-					timestamp: photo.node.taken_at_timestamp,
+					accessibility_caption: photo.node.accessibility_caption,
 					time_formated: moment.unix( photo.node.taken_at_timestamp ).format( 'DD/MM/YYYY [às] hh:mm:ss' ),
 				});
 
