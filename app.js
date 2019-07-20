@@ -1,5 +1,6 @@
 const axios 			= require('axios');
 const moment 			= require('moment');
+const cors 				= require('cors');
 
 var express 			= require('express');
 var app 				= express();
@@ -38,7 +39,7 @@ async function getHashtag(hashtag) {
 
 			}
 
-			return jsonReturn;
+			return jsonReturn.reverse();
 			
 		}
 
@@ -49,11 +50,11 @@ async function getHashtag(hashtag) {
 
 }
 
-app.get('/', async function (req, res) {
+app.get('/', cors(), async function (req, res) {
 	res.send( { photos: await getHashtag('FormaturaAnaEPedro') } );
 });
   
-app.get('/api', async function (req, res) {
+app.get('/api', cors(), async function (req, res) {
 	res.send( { photos: await getHashtag('FormaturaAnaEPedro') } );
 });
   
