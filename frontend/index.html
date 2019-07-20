@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/all.min.css">
+	<link rel="stylesheet" href="./css/style.css">
+
+	<title>Fotos da formatura - Ana e Pedro</title>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+</head>
+
+<body>
+
+	<button type="button" class="btn btn-light btn-fixed">
+		<i class="fab fa-3x fa-instagram"></i><br />
+		Publique com a hashtag<br />
+		<b>#FormaturaAnaEPedro</b><br />
+		<small>Apenas para perfis públicos</small>
+	</button>
+
+	<button type="button" class="btn btn-fixed-left" id="loading" style="display: none;">
+		<i class="fab fa fa-sync fa-spin"></i>
+	</button>
+
+
+	<div class="container-fluid">
+
+		<div class="d-flex flex-row flex-wrap align-content-stretch justify-content-start" id="photos-container"></div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<!-- <script src="./js/all.min.js"></script> -->
+	
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			load_photos();
+			setTimeout(load_photos, 15000);
+		});
+
+		function load_photos() {
+
+			$('#loading').show();
+
+			$.get('http://localhost:3000/', function (data) {
+
+				$.each(data.photos, function (key, item) {
+
+					if ($('#' + item.id).length < 1) {
+
+						var robot = '';
+						if (item.accessibility_caption.length > 1)
+							robot = '<i class="far fa-robot m-l-10"></i> ' + item.accessibility_caption;
+
+
+						$('#photos-container').prepend('' +
+							'<div class="p-2 flex-img" id="' + item.id + '" style="display: none;">' +
+							'<img src="' + item.image_thumb + '" class="img-fluid">' +
+							'<div class="text-block"> <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><b>' + item.time_formated + '</b>: ' + item.text + '</span><br /> <i class="far fa-heart"></i> ' + item.likes + ' <i class="far fa-comments m-l-10"></i> ' + item.comments + robot + '  </div>' +
+							'</div>'
+						);
+
+						$('#' + item.id).fadeIn(2000);
+
+					}
+
+				});
+
+			}).then(function () {
+
+				$('#loading').hide();
+
+			});
+		}
+
+	</script>
+
+</body>
+
+</html>

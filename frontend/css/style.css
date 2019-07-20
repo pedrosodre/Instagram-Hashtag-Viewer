@@ -1,0 +1,79 @@
+body {
+	background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1462536943532-57a629f6cc60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	padding: 15px 0;
+}
+
+.fa-instagram {
+	color: transparent;
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+	background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+	background-clip: text;
+	-webkit-background-clip: text;
+}
+
+.btn-fixed {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	z-index: 99;
+}
+
+.btn-fixed-left {
+	color: #FFF;
+	position: fixed;
+	bottom: 15px;
+	left: 15px;
+	z-index: 99;
+}
+
+.container {
+	background: #f9f9f9;
+}
+
+.m-l-10 {
+	margin-left: 20px;
+}
+
+/* #photos-container div:first-child {
+	min-width: 50%;
+	flex-grow: 1;
+} */
+
+.flex-img {
+	flex: 1;
+	min-width: 25%;
+	max-width: 25%;
+	position: relative;
+}
+
+@media (max-width: 600px) {
+	.flex-img {
+		flex: 1;
+		min-width: 100%;
+		max-width: 100%;
+		position: relative;
+	}
+}
+
+img {
+	margin: 5px;
+}
+
+.scale {
+	transform: scaleY(1.05);
+	padding-top: 5px; 
+}
+
+.text-block {
+	font-size: 12px;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	right: 10px;
+	background-color: rgba(0,0,0,0.6);
+	color: white;
+	padding: 15px;
+  }

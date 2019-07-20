@@ -34,7 +34,7 @@ async function getHashtag(hashtag) {
 					likes: photo.node.edge_liked_by.count,
 					comments: photo.node.edge_media_to_comment.count,
 					accessibility_caption: caption,
-					time_formated: moment.unix( photo.node.taken_at_timestamp ).format( 'DD/MM/YYYY [às] hh:mm:ss' ),
+					time_formated: moment.unix( photo.node.taken_at_timestamp ).format( 'DD/MM [às] hh:mm' ),
 				});
 
 			}
