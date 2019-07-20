@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./app.js",
-    "production": "nodemon ./app.js"
+    "dev": "nodemon ./app.js",
+    "production": "pm2 start app.js --name backend"
   },
   "author": "",
   "license": "ISC",
