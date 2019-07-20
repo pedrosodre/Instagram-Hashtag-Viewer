@@ -67,6 +67,12 @@ img {
 	padding-top: 5px; 
 }
 
+@media (max-width: 600px) {
+	.text-block {
+		font-size: 12px;
+	}
+}
+
 .text-block {
 	font-size: 16px;
 	position: absolute;
@@ -76,4 +82,4 @@ img {
 	background-color: rgba(0,0,0,0.6);
 	color: white;
 	padding: 15px;
-  }
+}
