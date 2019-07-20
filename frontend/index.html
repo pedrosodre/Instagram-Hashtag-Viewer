@@ -54,24 +54,29 @@
 
 			$.get('https://formatura.pedrosodre.dev/api', function (data) {
 
+
 				$.each(data.photos, function (key, item) {
 
+					var robot = '';
+					
+					if (item.accessibility_caption.length > 1)
+						robot = '<i class="far fa-robot m-l-10"></i> ' + item.accessibility_caption;
+
 					if ($('#' + item.id).length < 1) {
-
-						var robot = '';
-						if (item.accessibility_caption.length > 1)
-							robot = '<i class="far fa-robot m-l-10"></i> ' + item.accessibility_caption;
-
 
 						$('#photos-container').prepend('' +
 							'<div class="p-2 flex-img" id="' + item.id + '" style="display: none;">' +
 							'<img src="' + item.image_thumb + '" class="img-fluid">' +
-							'<div class="text-block"> <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><b>' + item.time_formated + '</b>: ' + item.text + '</span><br /> <i class="far fa-heart"></i> ' + item.likes + ' <i class="far fa-comments m-l-10"></i> ' + item.comments + robot + '  </div>' +
+							'<div class="text-block"> <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><b>' + item.time_formated + '</b>: ' + item.text + '</span><br /> <span id="likes' + item.id + '"><i class="far fa-heart"></i> ' + item.likes + '</span> <span id="comments' + item.id + '"><i class="far fa-comments m-l-10"></i> ' + item.comments + '</span> <span id="robot' + item.id + '">' + robot + '</span>  </div>' +
 							'</div>'
 						);
 
 						$('#' + item.id).fadeIn(2000);
 
+					}else{
+						$('#likes' + item.id).html('<i class="far fa-heart"></i> ' + item.likes + '');
+						$('#comments' + item.id).html('<i class="far fa-comments m-l-10"></i> ' + item.comments + '');
+						$('#robot' + item.id).html(robot);
 					}
 
 				});
