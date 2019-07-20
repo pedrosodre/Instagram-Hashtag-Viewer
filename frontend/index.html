@@ -45,7 +45,7 @@
 
 		$(document).ready(function () {
 			load_photos();
-			setTimeout(load_photos, 15000);
+			setInterval(load_photos, 15000);
 		});
 
 		function load_photos() {
@@ -83,6 +83,25 @@
 			});
 		}
 
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			
+    		setInterval(function() {
+
+				var time = Math.ceil( ( 4 * ( $('.flex-img').length / 4) ) ) * 1000;
+
+				if(time > 30000)
+					time = 30000;
+
+
+				$("html, body").animate({ scrollTop: $(document).height() }, Math.ceil( time / 6 ) );
+				$('html, body').animate({ scrollTop:0 }, time);
+				    
+			},50000);
+	
+		});
 	</script>
 
 </body>
