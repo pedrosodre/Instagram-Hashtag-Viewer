@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="./css/all.min.css">
 	<link rel="stylesheet" href="./css/style.css">
 
-	<title>Fotos da formatura - Ana e Pedro</title>
+	<title>Your title goes here</title>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -19,9 +19,9 @@
 
 	<button type="button" class="btn btn-light btn-lg btn-fixed">
 		<i class="fab fa-3x fa-instagram"></i><br />
-		Publique com a hashtag<br />
-		<b>#FormaturaAnaEPedro</b><br />
-		<small>Apenas para perfis públicos</small>
+		Post with hashtag<br />
+		<b>#YourHashTag</b><br />
+		<small>Public profiles only</small>
 	</button>
 
 	<button type="button" class="btn btn-fixed-left" id="loading" style="display: none;">
@@ -52,7 +52,7 @@
 
 			$('#loading').show();
 
-			$.get('https://formatura.pedrosodre.dev/api', function (data) {
+			$.get('https://backend.domain/api', function (data) {
 
 
 				$.each(data.photos, function (key, item) {

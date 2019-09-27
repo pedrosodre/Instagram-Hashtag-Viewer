@@ -21,12 +21,12 @@ Choose a web server of your choice and host frontend files there.
 
 ### Backend
 
-Step 1. Change the hashtag that you want to retrieve on `app.js` file, at line 58.
+Step 1. Change the hashtag that you want to retrieve on `app.js` file, at line 8.
 ```javascript
-res.send( { photos: await getHashtag('Hashtag') } );
+const hashtag           = 'YourHashtag';
 ```
 
-Step 2. Start the backend by running the command `npm start`.
+Step 2. Start the backend by running the command `npm start` (or `npm run production` to run it with pm2).
 
 ### Frontend
 
@@ -35,7 +35,9 @@ Step 1. Change the backend address on `index.html` file, at line 55.
 $.get('https://backend.domain/api', function (data) {
 ```
 
-Step 2. Host your frontend files.
+Step 2. Customize your frontend as you want.
+
+Step 3. Host your frontend files.
 
 ## To do
 

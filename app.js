@@ -5,6 +5,8 @@ const cors 				= require('cors');
 var express 			= require('express');
 var app 				= express();
 
+const hashtag           = 'YourHashtag';
+
 async function getHashtag(hashtag) {
 
 	try {
@@ -51,11 +53,11 @@ async function getHashtag(hashtag) {
 }
 
 app.get('/', cors(), async function (req, res) {
-	res.send( { photos: await getHashtag('FormaturaAnaEPedro') } );
+	res.send( { photos: await getHashtag(hashtag) } );
 });
   
 app.get('/api', cors(), async function (req, res) {
-	res.send( { photos: await getHashtag('FormaturaAnaEPedro') } );
+	res.send( { photos: await getHashtag(hashtag) } );
 });
   
 app.listen(3000, function () {
